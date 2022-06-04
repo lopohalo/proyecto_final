@@ -321,6 +321,18 @@ input {
 .imagen-icono {
     width: 18px;
 }
+.icoTodos{
+    color:rgb(1, 26, 214) !important;
+}
+.candado{
+    position: absolute;
+    display: block;
+    bottom: 2.5rem;
+    left: 0.2rem;
+    user-select: none;
+    cursor: pointer;
+    color: rgb(170, 166, 166);
+}
 
 .input-icon {
     position: absolute;

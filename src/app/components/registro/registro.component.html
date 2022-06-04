@@ -9,15 +9,15 @@
                         <div class="col-2">
                             <label for="name">Nombre</label>
                             <div class="input-group">
-                                <input id="name" data-name="false" #name class="input--style-1" type="text" placeholder="Nombre Ej. Juan Sebastian">
-                                <span class="icon"><i class="fa-solid fa-user i"></i></span>
+                                <input  (click)="cambio3()" id="name" data-name="false" #name class="input--style-1" type="text" placeholder="Nombre Ej. Juan Sebastian">
+                                <span  #boton   class="icon"><i #iconame class="fa-solid fa-user i"></i></span>
                             </div>
                         </div>
                         <div class="col-2">
                             <label for="apellido">Apellidos</label>
                             <div class="input-group">
-                                <input class="input--style-1" data-lastname="false" #lastname type="text" id="apellido" placeholder="Apellidos Ej. Rueda Tarazona">
-                                <span class="icon"><i class="fa-solid fa-user-plus i"></i></span>
+                                <input  (click)="cambio4()" class="input--style-1"  data-lastname="false" #lastname type="text" id="apellido" placeholder="Apellidos Ej. Rueda Tarazona">
+                                <span #boton class="icon"><i #icolastname class="fa-solid fa-user-plus i"></i></span>
                             </div>
                         </div>
                     </div>
@@ -25,15 +25,15 @@
                         <div class="col-2">
                             <label for="email">Correo Electronico</label>
                             <div class="input-group">
-                                <input #email data-email="false" class="input--style-1" type="email" id="email" placeholder="Ej. jsebg.ruedat@gmail.com">
-                                <span class="icon"><i class="fa-solid fa-at i"></i></span>
+                                <input (click)="cambio5()"  #email data-email="false" class="input--style-1" type="email" id="email" placeholder="Ej. jsebg.ruedat@gmail.com">
+                                <span #boton  class="icon"><i #icoemail class="fa-solid fa-at i"></i></span>
                             </div>
                         </div>
                         <div class="col-2">
                             <label for="number">Telefono</label>
                             <div class="input-group">
-                                <input #number data-number="false" class="input--style-1" type="number" id="number" placeholder="Ej. 3172466043">
-                                <span class="icon"><i class="fa-solid fa-phone i"></i></span>
+                                <input (click)="cambio6()" #number data-number="false" class="input--style-1" type="number" id="number" placeholder="Ej. 3172466043">
+                                <span #boton class="icon"><i #iconumber class="fa-solid fa-phone i"></i></span>
                             </div>
                         </div>
                     </div>
@@ -60,14 +60,16 @@
                         <div class="col-2">
                             <label for="password"> Contraseña</label>
                             <div class="input-group">
-                                <input data-muestraj="false" id="password" #password class="input--style-1" id="password" type="password">
+                                <input  (click)="cambio7()" data-contra="false"  data-muestraj="false" id="password" #password class="input--style-1" id="password" type="password" style="padding-left: 28px;">
+                                <span #boton ><i #icocontra class="fa-solid fa-lock candado"></i></span>
                                 <span #boton (click)="cambio1()" class="icon"><img #img class="i imagen-icono"src="./assets/img/eye-slash-solid.svg"/></span>
                             </div>
                         </div>
                         <div class="col-2">
                             <label for="password1">Confirmar Contraseña</label>
                             <div class="input-group">
-                                <input data-muestrak="false" class="input--style-1" #password1 id="password1" type="password">
+                                <input (click)="cambio8()" data-contra1="false" data-muestrak="false" class="input--style-1" #password1 id="password1" type="password" style="padding-left: 28px;">
+                                <span #boton ><i #icocontra1 class="fa-solid fa-lock candado"></i></span>
                                 <span #boton (click)="cambio2()" class="icon"><img #img2 class="i imagen-icono" src="./assets/img/eye-slash-solid.svg"/></span>
                             </div>
                         </div>
