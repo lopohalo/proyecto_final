@@ -558,6 +558,7 @@ input {
     margin-bottom: 14px !important;
     border: none;
     padding-right: 50px;
+    background: white;
 }
 
 .pepe:focus-visible {

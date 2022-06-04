@@ -1,4 +1,5 @@
-import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -23,7 +24,11 @@ export class RegistroComponent implements OnInit {
     @ViewChild('icocontra') icocontra?: ElementRef;
     @ViewChild('icocontra1') icocontra1?: ElementRef;
 
-    constructor(private renderer2: Renderer2) { }
+    constructor(private renderer2: Renderer2, private fb: FormBuilder) {
+        this.fb.group({
+            
+        })
+    }
 
     ngOnInit(): void {
     }
