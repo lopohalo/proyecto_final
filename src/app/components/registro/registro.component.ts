@@ -1,6 +1,5 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-
+import { FormBuilder,FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-registro',
@@ -8,6 +7,10 @@ import { FormBuilder } from '@angular/forms';
     styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent implements OnInit {
+    registroGrupo: FormGroup;
+    revisarCorreo = /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/
+    revisarNumero =  /([0-18])$/
+    revisarContraseñaFuerte = /(?=(.*[0-9]))(?=.*[\!@#$%^&*()\\[\]{}\-_+=|:;"'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/
     @ViewChild('password') passwordHTML?: ElementRef;
     @ViewChild('password1') password1HTML?: ElementRef;
     @ViewChild('boton') btnHTML?: ElementRef;
@@ -23,15 +26,59 @@ export class RegistroComponent implements OnInit {
     @ViewChild('iconumber') iconumber?: ElementRef;
     @ViewChild('icocontra') icocontra?: ElementRef;
     @ViewChild('icocontra1') icocontra1?: ElementRef;
+    @ViewChild('spanconfirma') spanconfirma?: ElementRef;
+    @ViewChild('spanValidarFormulario') spanValidarFormulario?: ElementRef;
 
     constructor(private renderer2: Renderer2, private fb: FormBuilder) {
-        this.fb.group({
-            
+        this.registroGrupo = fb.group({
+            email: ['',[Validators.required, Validators.pattern(this.revisarCorreo)]],
+            password:['',[Validators.required, Validators.pattern(this.revisarContraseñaFuerte)]],
+            password1: ['',Validators.required],
+            number:['', Validators.compose([
+                Validators.required,
+                Validators.minLength(10),
+                Validators.maxLength(10),
+                Validators.pattern(/^[1-9]\d{9}$/)
+            ])],
+            name: ['', Validators.required],
+            lastname: ['',Validators.required],
+            date: ['', Validators.required],
         })
+
+
     }
 
     ngOnInit(): void {
     }
+
+    ComprobandoPassword(){
+        const confirmando = this.spanconfirma?.nativeElement
+        let status:boolean=false
+        const verificar: any = {
+            password: this.registroGrupo.get('password')?.value,
+            password1: this.registroGrupo.get('password1')?.value,
+        }
+        console.log(verificar)
+        if(verificar.password != verificar.password1){
+            this.renderer2.setAttribute(confirmando, 'value', 'LAS CONTRASEÑAS NO COINCIDEN')
+            status = false
+        }else{
+            this.renderer2.setAttribute(confirmando, 'value', '')
+            status = true
+        }
+        return status;
+    }
+
+    AnalizandoRegistro(){
+        const confirmando1 = this.spanValidarFormulario?.nativeElement
+        if(this.ComprobandoPassword() == false){
+            this.renderer2.setAttribute(confirmando1, 'value', 'Por favor vertifique Las claves')
+        }else{
+            this.renderer2.setAttribute(confirmando1, 'value', '')
+            console.log(this.registroGrupo)
+        }
+    }
+
 
     cambio1() {
         const elemento = this.passwordHTML?.nativeElement;
@@ -123,10 +170,10 @@ export class RegistroComponent implements OnInit {
             this.renderer2.removeClass(iconame1, 'icoTodos')
             this.renderer2.setAttribute(name1, 'data-name', 'false');
             this.renderer2.addClass(icolastname1, 'icoTodos')
-            this.renderer2.setAttribute(lastname1, 'data-name', 'true');
+            this.renderer2.setAttribute(lastname1, 'data-lastname', 'true');
         } else {
             this.renderer2.removeClass(icolastname1, 'icoTodos')
-            this.renderer2.setAttribute(lastname1, 'data-name', 'false');
+            this.renderer2.setAttribute(lastname1, 'data-lastname', 'false');
         }
 
     }

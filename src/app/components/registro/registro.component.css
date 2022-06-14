@@ -339,12 +339,12 @@ input {
 }
 
 .input-group input:hover {
-    border-bottom: 2px solid rgb(1, 26, 214) !important;
+    border-bottom: 2px solid rgb(1, 26, 214) ;
     transition-duration: 1s
 }
 
 .input-group input:focus {
-    border-bottom: 2px solid rgb(1, 26, 214) !important;
+    border-bottom: 2px solid rgb(1, 26, 214) ;
     transition-duration: 1s
 }
 
@@ -390,7 +390,7 @@ input {
 
 .input--style-1 {
     padding: 9px 0;
-    color: rgb(102, 102, 102);
+    color: rgb(56, 56, 56);
 }
 
 .input--style-1::-webkit-input-placeholder {
@@ -564,3 +564,33 @@ input {
 .pepe:focus-visible {
     border: none !important;
 }
+.error {
+    color: red;
+    margin-top: -23px;
+    font-size: 12px;
+}
+.verificacion{
+    border: none !important;
+    position: absolute !important;
+    margin-top: 68px !important; color: red;
+    font-size: 13px !important;
+    background-color: white;
+}
+.verificacion:hover{
+    border: none !important;
+}
+.verificacion1{
+    border: none !important;
+    position: absolute !important;
+    color: red;
+    font-size: 20px !important;
+    background-color: white;
+    margin-top: -30px;
+    text-align: center;
+    padding-right: 28%;
+}
+.verificacion1:hover{
+    border: none !important;
+}
+
+
