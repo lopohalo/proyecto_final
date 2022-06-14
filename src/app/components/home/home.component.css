@@ -1,0 +1,106 @@
+.d-block{
+width: 100px;
+height: 500px;
+}
+
+.card-img-top
+{
+  width: 100px;
+  justify-content: center;
+  align-content: center;
+}
+
+.card-img-top2
+  {
+width: 545px;
+height: 220px;
+  }
+
+  .card-img-top3
+  {
+width: 90px;
+height: 90px;
+justify-content: center;
+align-items: center;
+margin-left: 70px;
+  }
+
+  .tarjeta
+{
+  background-color: rgb(248, 248, 248);
+
+}
+
+.carrucel{
+width: 100%;
+}
+
+.logo{
+    width: 250px;
+    margin-left: 500px;
+}
+
+.espacio{
+  background-color: #1D70B7;
+  height: 20px;
+}
+
+.espacio2{
+  height: 20px;
+  background-color: #BD1222;
+}
+
+a:before {
+  content: '';
+  background: #1D70B7;
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 3px;
+}
+
+a:hover {
+  background-position: 0;
+  }
+
+  a:hover::before {
+  width: 100%;
+}
+
+a {
+  background-image: linear-gradient(
+    to right,
+    #1D70B7,
+    #1D70B7 50%,
+    #000 50%
+  );
+  background-size: 200% 100%;
+  background-position: -100%;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+.imagen
+{
+height: 600px;
+}
+
+.total{
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+.texto-encima{
+  position: absolute;
+  top: 290px;
+  left: 55%;
+}
+
+.text:hover {
+color:#BD1222
+}
+
