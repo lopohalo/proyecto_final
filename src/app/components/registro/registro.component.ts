@@ -94,7 +94,7 @@ export class RegistroComponent implements OnInit {
                 showConfirmButton: false,
                 timer: 1500
             })
-            this._contactoService.postContacto(registroGrupo).subscribe(data =>{
+            this._contactoService.postContacto(registroGrupo).subscribe(data => {
                 this.router.navigate(['/citas'])
             }, error => {
                 console.log(error)
