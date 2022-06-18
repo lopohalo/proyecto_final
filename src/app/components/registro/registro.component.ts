@@ -1,5 +1,9 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormBuilder,FormGroup, Validators } from '@angular/forms';
+import { Contacto } from 'src/models/contacto'
+import { ActivatedRoute, Router } from '@angular/router';
+import { Contacto1Service } from '../../services/contacto1.service'
+import Swal from 'sweetalert2'
 
 @Component({
     selector: 'app-registro',
@@ -29,7 +33,7 @@ export class RegistroComponent implements OnInit {
     @ViewChild('spanconfirma') spanconfirma?: ElementRef;
     @ViewChild('spanValidarFormulario') spanValidarFormulario?: ElementRef;
 
-    constructor(private renderer2: Renderer2, private fb: FormBuilder) {
+    constructor(private renderer2: Renderer2, private fb: FormBuilder,private _contactoService: Contacto1Service,private router: Router,private idRoute: ActivatedRoute,) {
         this.registroGrupo = fb.group({
             email: ['',[Validators.required, Validators.pattern(this.revisarCorreo)]],
             password:['',[Validators.required, Validators.pattern(this.revisarContraseñaFuerte)]],
@@ -70,12 +74,31 @@ export class RegistroComponent implements OnInit {
     }
 
     AnalizandoRegistro(){
+        const registroGrupo: Contacto = {
+            email: this.registroGrupo.get('email')?.value,
+            password: this.registroGrupo.get('password')?.value,
+            number: this.registroGrupo.get('number')?.value,
+            name: this.registroGrupo.get('name')?.value,
+            lastname: this.registroGrupo.get('mensaje')?.value,
+            date: this.registroGrupo.get('date')?.value
+        }
         const confirmando1 = this.spanValidarFormulario?.nativeElement
         if(this.ComprobandoPassword() == false){
             this.renderer2.setAttribute(confirmando1, 'value', 'Por favor vertifique Las claves')
         }else{
             this.renderer2.setAttribute(confirmando1, 'value', '')
-            console.log(this.registroGrupo)
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Se ha registrado correctamente',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            this._contactoService.postContacto(registroGrupo).subscribe(data =>{
+                this.router.navigate(['/citas'])
+            }, error => {
+                console.log(error)
+            })
         }
     }
 

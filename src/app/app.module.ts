@@ -8,6 +8,7 @@ import { DatosContactoComponent } from './components/datos-contacto/datos-contac
 import { ReactiveFormsModule } from '@angular/forms';
 import { EmpresasComponent } from './components/empresas/empresas.component';
 import { CitasComponent } from './components/citas/citas.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CitasComponent } from './components/citas/citas.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
 
   ],
   providers: [],

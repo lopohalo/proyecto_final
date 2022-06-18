@@ -62,13 +62,13 @@
                             *ngIf="ControlCitas.get('sintomas')?.hasError('required') && ControlCitas.get('sintomas')?.touched">Sintomas
                             Obligatorio</span>
                     </div>
-                    <button class="btn bg-indigo-600 text-white w-full uppercase p-3 font-bold hover:bg-indigo-800"
-                        [disabled]="ControlCitas.invalid" type="submit">Registrarse</button>
+                    <input #registrarse class="btn bg-indigo-600 text-white w-full uppercase p-3 font-bold hover:bg-indigo-800"
+                        [disabled]="ControlCitas.invalid" value="Registrarse" type="submit"/>
                 </form>
             </div>
             <div class="md:w-1/2 lg:w-3/5 md:h-screen overflow-y-scroll">
 
-                <ng-template [ngIf]="popo" [ngIfElse]="loading">
+                <ng-template [ngIf]="pepe.length" [ngIfElse]="loading">
                     <div class="lessons-list">
                         <h2 class="font-black text-3xl text-center">ListadoPacientes</h2>
                         <p class="text-xl mt-5 mb-10 text-center">Administra tus <span
@@ -95,11 +95,11 @@
                     <p class="font-bold mb-3 text-gray-700 uppercase">Síntomas:
                         <span class="font-normal normal-case">{{control.sintomas}}</span>
                     </p>
-                    <div class="flex justify-between mt-10">
+                    <div  class="flex justify-between mt-10">
+                        <button #boton #editar type="button"
+                            class="font-bold text-white bg-indigo-500 hover:bg-indigo-700 uppercase py-2 px-10 rounded-lg" (click)="Trayendoobjeto(control)">editar</button>
                         <button type="button"
-                            class="font-bold text-white bg-indigo-500 hover:bg-indigo-700 uppercase py-2 px-10 rounded-lg">editar</button>
-                        <button type="button"
-                            class="font-bold text-white bg-red-500 hover:bg-red-700 uppercase py-2 px-10 rounded-lg">eliminar</button>
+                            class="font-bold text-white bg-red-500 hover:bg-red-700 uppercase py-2 px-10 rounded-lg"(click)="Elimiando(control.id)">eliminar</button>
                     </div>
                 </div>
                 <ng-template #loading>
