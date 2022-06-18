@@ -5,18 +5,14 @@ import { DatosContactoComponent } from './components/datos-contacto/datos-contac
 import { RegistroComponent } from './components/registro/registro.component';
 
 const routes: Routes = [
-  {path: "citas", component:CitasComponent},
-  {path: "registro",component:RegistroComponent},
-  {path: "datos", component:DatosContactoComponent},
+    { path: "citas", component: CitasComponent },
+    { path: "registro", component: RegistroComponent },
+    { path: "datos", component: DatosContactoComponent },
 
-
-
-
-
-
+]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }
