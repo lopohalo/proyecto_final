@@ -25,3 +25,10 @@
     background-color: #cff4fc4e;
     border:none;
 }
+
+.imgNosotros {
+    height: 480px;
+    width: 100%;
+    object-fit: cover;
+}
+
