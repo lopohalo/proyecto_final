@@ -8,7 +8,6 @@ const routes: Routes = [
     { path: "citas", component: CitasComponent },
     { path: "registro", component: RegistroComponent },
     { path: "datos", component: DatosContactoComponent },
-
 ]
 
 @NgModule({

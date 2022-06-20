@@ -51,9 +51,11 @@ export class RegistroComponent implements OnInit {
 
 
     }
-
     ngOnInit(): void {
+
     }
+
+
 
     ComprobandoPassword(){
         const confirmando = this.spanconfirma?.nativeElement
@@ -87,17 +89,27 @@ export class RegistroComponent implements OnInit {
             this.renderer2.setAttribute(confirmando1, 'value', 'Por favor vertifique Las claves')
         }else{
             this.renderer2.setAttribute(confirmando1, 'value', '')
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Se ha registrado correctamente',
-                showConfirmButton: false,
-                timer: 1500
-            })
             this._contactoService.postContacto(registroGrupo).subscribe(data => {
-                this.router.navigate(['/citas'])
-            }, error => {
-                console.log(error)
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Se ha registrado correctamente',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+
+                const nombre = [data.name]
+
+                localStorage.setItem('Nombre', JSON.stringify(nombre) )
+                setTimeout(() => {
+                    window.location.reload()
+                },1000)
+            }, HttpErrorResponse => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: HttpErrorResponse.error.mensaje,
+                })
             })
         }
     }
@@ -331,6 +343,7 @@ export class RegistroComponent implements OnInit {
 
     }
 }
+
 
 
 

@@ -122,8 +122,13 @@ export class CitasComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.popo = localStorage.getItem('citas')
-        this.pepe = JSON.parse(this.popo)
+        if(localStorage.getItem('citas')){
+            this.popo = localStorage.getItem('citas')
+            this.pepe = JSON.parse(this.popo)
+        }else{
+            localStorage.setItem('citas', '[]')
+        }
+
     }
 
 }

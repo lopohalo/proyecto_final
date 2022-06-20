@@ -1,6 +1,11 @@
 const Contacto = require('../models/Contacto')
 
-exports.crearContacto = async(req, res) => {
+exports.crearContacto = async (req, res) => {
+    const { email } = req.body
+    const existeUsuario = await Contacto.findOne({ email })
+    if (existeUsuario) {
+        return res.status(404).json({ mensaje: "Usuario ya registrado" })
+    }
     try {
         let contacto
         contacto = new Contacto(req.body)
@@ -11,8 +16,17 @@ exports.crearContacto = async(req, res) => {
         res.status(500).send("Hay un problema")
     }
 }
+exports.obtenerContactos = async(req, res) => {
+    try {
+        let contactos = await Contacto.find();
+        res.json(contactos)
+    } catch (error) {
+        console.log(error)
+        res.status(500).send("Hay un problema")
+    }
+}
 
-exports.obtenerContacto = async(req, res) => {
+exports.obtenerContacto = async (req, res) => {
     try {
         let contacto = await Contacto.findById(req.params.id)
         if (!contacto) {
@@ -24,9 +38,9 @@ exports.obtenerContacto = async(req, res) => {
         res.status(500).send("Hay un problema")
     }
 }
-exports.actualizarContacto = async(req, res) => {
+exports.actualizarContacto = async (req, res) => {
     try {
-        const { documento, random,afiliado } = req.body
+        const { documento, random, afiliado } = req.body
 
         let contacto = await Contacto.findById(req.params.id)
         if (!contacto) {
@@ -46,7 +60,7 @@ exports.actualizarContacto = async(req, res) => {
         res.status(500).send("Hay un problema")
     }
 }
-exports.borrarContacto = async(req, res) => {
+exports.borrarContacto = async (req, res) => {
     try {
         let contacto = await Contacto.findById(req.params.id)
         if (!contacto) {
@@ -60,4 +74,24 @@ exports.borrarContacto = async(req, res) => {
         res.status(500).send("Hay un problema")
     }
 }
-
+exports.autenticar = async (req, res) => {
+    
+    try {
+        const { email,password } = req.body
+    const existeUsuario = await Contacto.findOne({ email })
+    if (!existeUsuario) {
+        return res.status(404).json({ mensaje: "Usuario no registrado" })
+    } 
+    const password1 = await existeUsuario.password
+    if(password1 == password){
+        res.json({
+            name: existeUsuario.name,
+        })
+    }else{
+        return res.status(500).json({ mensaje: "Usuario o contraseña no coincide" })
+    }
+    } catch (error) {
+        console.log(error)
+        res.status(500).send("Hay un problema")
+    }
+}

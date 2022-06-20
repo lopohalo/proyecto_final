@@ -15,25 +15,25 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    RegistroComponent,
-    DatosContactoComponent,
-    EmpresasComponent,
-    CitasComponent,
-    NosotrosComponent,
-    FooterComponent,
-    NavbarfijaComponent,
-    NavbarComponent,
+    declarations: [
+        AppComponent,
+        RegistroComponent,
+        DatosContactoComponent,
+        EmpresasComponent,
+        CitasComponent,
+        NosotrosComponent,
+        FooterComponent,
+        NavbarfijaComponent,
+        NavbarComponent,
 
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
