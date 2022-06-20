@@ -7,16 +7,16 @@ import { HomeComponent } from './components/home/home.component';
 import { EmpresasComponent } from './components/empresas/empresas.component';
 
 @NgModule({
-  declarations: [
+declarations: [
     AppComponent,
     HomeComponent,
     EmpresasComponent,
-  ],
-  imports: [
+],
+imports: [
     BrowserModule,
     AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+],
+providers: [],
+bootstrap: [AppComponent]
 })
 export class AppModule { }
