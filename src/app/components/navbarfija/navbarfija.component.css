@@ -1,16 +1,5 @@
 .logonav {
     width: 140px;
-<<<<<<< HEAD
-    height: 90px ;
-
-}
-.btn{
-    color: #ffffff;
-    background-color: #1D70B7
-}
-
-.navfija{
-=======
     height: 90px;
 }
 .btn {
@@ -18,7 +7,6 @@
     background-color: #1D70B7;
 }
 .navfija {
->>>>>>> OscarJavier
     background: #eff5fadc;
 }
 .slogan {
