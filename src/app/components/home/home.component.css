@@ -7,6 +7,7 @@ object-fit:cover;
 .card-img-top
 {
 width: 100px;
+
 }
 
 .card-img-top2{
@@ -50,6 +51,7 @@ width: 100%;
 
 .logo{
 width: 28%;
+display: -webkit-inline-box;
 }
 
 .espacio{
@@ -100,11 +102,11 @@ transition: all 0.3s ease-in-out;
 height: 600px;
 }
 
-.total{
+/* .total{
 position: relative;
 display: inline-block;
 text-align: center;
-}
+} */
 
 .texto-encima{
 position: absolute;

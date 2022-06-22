@@ -28,4 +28,5 @@ object-fit: cover;
 
 .logo{
     width: 28%;
+    display: -webkit-inline-box;
 }
