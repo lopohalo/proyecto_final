@@ -100,11 +100,7 @@ transition: all 0.3s ease-in-out;
 height: 600px;
 }
 
-.total{
-position: relative;
-display: inline-block;
-text-align: center;
-}
+
 
 .texto-encima{
 position: absolute;

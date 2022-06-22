@@ -176,18 +176,28 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form>
+                                                <form [formGroup]="formulario" (ngSubmit)="enviardatos()">
                                                     <div class="mb-3">
                                                         <label class="form-label">Nombre</label>
                                                         <input type="text" formControlName="nombre"
                                                             class="form-control">
-                                                        <!-- <span style="color: red;" *ngIf="productoForm.get('nombre')?.hasError('required') && productoForm.get('nombre')?.touched">Nombre Obligatorio</span> -->
+                                                        <label style="color: red;"
+                                                            *ngIf="formulario.get('nombre')?.hasError('required') && formulario.get('nombre')?.touched">nombre
+                                                            obligatorio</label>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label class="form-label">Número de documento</label>
-                                                        <input type="text" formControlName="nombre"
+                                                        <input type="text" formControlName="documento"
                                                             class="form-control">
-                                                        <!-- <span style="color: red;" *ngIf="productoForm.get('nombre')?.hasError('required') && productoForm.get('nombre')?.touched">Nombre Obligatorio</span> -->
+                                                        <label style="color: red;"
+                                                            *ngIf="formulario.get('documento')?.hasError('minlength')">Dato
+                                                            invalido</label>
+                                                        <label style="color: red;"
+                                                            *ngIf="formulario.get('documento')?.hasError('required') && formulario.get('documento')?.touched">Dato
+                                                            obligatorio</label>
+                                                        <label style="color: red;"
+                                                            *ngIf="formulario.get('documento')?.hasError('maxlength')">Dato
+                                                            Inválido</label>
                                                     </div>
 
 
@@ -195,25 +205,24 @@
                                                         <label class="form-label">Correo electrónico</label>
                                                         <input type="email" class="form-control"
                                                             formControlName="email">
-                                                        <!-- <span style="color: red;" *ngIf="productoForm.get('email')?.hasError('pattern')">Correo Invalido</span> -->
-                                                        <!-- <span style="color: red;"*ngIf="productoForm.get('email')?.hasError('required') && productoForm.get('email')?.touched">Correo Obligatorio</span> -->
-                                                        <div class="form-text">Nosostros no compartiremos tu correo con
+                                                        <label style="color:red;"
+                                                            *ngIf="formulario.get('email')?.hasError('required') && formulario.get('email')?.touched">Correo
+                                                            Obligatorio</label>
+                                                        <label style="color:red;"
+                                                            *ngIf="formulario.get ('email')?.hasError('pattern')">Correo
+                                                            Inválido</label>
+                                                        <div class="form-text mt-1">Nosostros no compartiremos tu correo
+                                                            con
                                                             alguien más.
                                                         </div>
-                                                    </div>
-
-
-                                                    <div class="row justify-content-between">
-                                                        <button type="submit"
-                                                            class="btn btn-primary btn-primary1 col-6">Enviar
-                                                            información</button>
+                                                        <button type="submit" class="btn btn-primary mt-4 col-4"
+                                                            [disabled]="formulario.invalid">Envar datos</button>
                                                         <button type="button" data-bs-dismiss="modal" aria-label="Close"
-                                                            class="btn offset-2 btn-primary col-4">Cancelar</button>
+                                                            class="btn offset-2 btn-primary col-4 mt-4">Cancelar</button>
                                                     </div>
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
-
                                             </div>
                                         </div>
                                     </div>
