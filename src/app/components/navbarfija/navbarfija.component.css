@@ -1,28 +1,26 @@
-.logonav{
+.logonav {
     width: 140px;
-    height: 90px ;
-
+    height: 90px;
 }
 .btn {
-    color:#ffffff;
-    background-color: #1D70B7;   
+    color: #ffffff;
+    background-color: #1D70B7;
 }
-.navfija{
+.navfija {
     background: #eff5fadc;
 }
-.slogan{
+.slogan {
     padding-left: 1px;
     font-style: italic;
     color: #1D70B7;
 }
-
-.icononav:hover{
+.icononav:hover {
     color: #1D70B7;
 }
-.icononav{
-    color: #BD1222 ;
+.icononav {
+    color: #BD1222;
     border-radius: 5px;
-} 
+}
 
 /* #1D70B7 */
 /* #BD1222 */
