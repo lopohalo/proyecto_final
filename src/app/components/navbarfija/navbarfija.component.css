@@ -1,5 +1,6 @@
-.logonav{
+.logonav {
     width: 140px;
+<<<<<<< HEAD
     height: 90px ;
 
 }
@@ -9,21 +10,28 @@
 }
 
 .navfija{
+=======
+    height: 90px;
+}
+.btn {
+    color: #ffffff;
+    background-color: #1D70B7;
+}
+.navfija {
+>>>>>>> OscarJavier
     background: #eff5fadc;
 }
-.slogan{
+.slogan {
     padding-left: 1px;
     font-style: italic;
     color: #1D70B7;
 }
-
-.icononav:hover{
+.icononav:hover {
     color: #1D70B7;
 }
-.icononav{
-    color: #BD1222 ;
+.icononav {
+    color: #BD1222;
     border-radius: 5px;
-
 }
 .imagen-icono {
     width: 18px;
