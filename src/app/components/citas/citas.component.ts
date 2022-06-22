@@ -9,11 +9,13 @@ import Swal from 'sweetalert2'
     styleUrls: ['./citas.component.css']
 })
 export class CitasComponent implements OnInit {
+    CitasGlobales: any
     ControlCitas: FormGroup
     revisarCorreo = /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/
     GuardarCitas: any
     pepe: any
     popo: any
+    nombre: any
     id: any | null
     @ViewChild('registrarse') registrarseHTML?: ElementRef
     @ViewChild('editar') editar?: ElementRef
@@ -32,6 +34,22 @@ export class CitasComponent implements OnInit {
         })
 
     }
+
+    ngOnInit(): void {
+        const nombreLS: any = localStorage.getItem('Nombre')
+        this.nombre = JSON.parse(nombreLS)
+        if (localStorage.getItem(this.nombre)) {
+            this.popo = localStorage.getItem(this.nombre)
+            this.pepe = JSON.parse(this.popo)
+        } else {
+            localStorage.setItem(this.nombre, '[]')
+            this.popo = localStorage.getItem(this.nombre)
+            this.pepe = JSON.parse(this.popo)
+        }
+}
+
+
+
     generadoraID() {
 
         let random = Math.random().toString(36).substring(2);
@@ -51,7 +69,6 @@ export class CitasComponent implements OnInit {
         this.id = obj.id
     }
     Elimiando(id: any) {
-        console.log(id)
         this.id = id
         Swal.fire({
             title: 'Esta Seguro?',
@@ -63,11 +80,16 @@ export class CitasComponent implements OnInit {
             confirmButtonText: 'Si, Eliminalo!'
         }).then((result) => {
             if (result.isConfirmed) {
+                const arregloGlobal:any = localStorage.getItem('control-medico')
+                const arregloGlobal1:any = JSON.parse(arregloGlobal)
                 const nuevoarreglo = this.pepe.filter((arregloViejo: any) => arregloViejo.id !== this.id)
                 this.GuardarCitas = nuevoarreglo
-                localStorage.setItem('citas', JSON.stringify(this.GuardarCitas))
+                const nuevoArregloGlobal = arregloGlobal1.filter((arregloViejo1: any) => arregloViejo1.id !== this.id)
+                this.CitasGlobales = nuevoArregloGlobal
+                localStorage.setItem(this.nombre, JSON.stringify(this.GuardarCitas))
+                localStorage.setItem('control-medico', JSON.stringify(this.CitasGlobales))
                 this.id = null
-                this.popo = localStorage.getItem('citas')
+                this.popo = localStorage.getItem(this.nombre)
                 this.pepe = JSON.parse(this.popo)
                 Swal.fire(
                     'Eliminado!',
@@ -88,21 +110,31 @@ export class CitasComponent implements OnInit {
             sintomas: this.ControlCitas.get('sintomas')?.value,
             id: ''
         }
-        console.log(citas)
-        let recogiendo: any = localStorage.getItem('citas')
+        let recogiendo: any = localStorage.getItem(this.nombre)
         let recogido: any = JSON.parse(recogiendo)
+        let arregloGlobal:any = localStorage.getItem('control-medico')
+        let arregloGlobal1:any =JSON.parse(arregloGlobal)
         if (recogido == null) {
             this.GuardarCitas = []
         } else {
             this.GuardarCitas = recogido
         }
+        if(arregloGlobal == null){
+            this.CitasGlobales = []
+        } else {
+            this.CitasGlobales = arregloGlobal1
+        }
 
         if (this.id == null) {
             citas.id = this.generadoraID()
             this.GuardarCitas.push(citas)
-            console.log(citas)
+            this.CitasGlobales.push(citas)
         } else {
             citas.id = this.id
+            const arregloGlobal:any = localStorage.getItem('control-medico')
+            const arregloGlobal1:any = JSON.parse(arregloGlobal)
+            this.CitasGlobales = arregloGlobal1.map((viejoArreglo: any) => viejoArreglo.id === this.id ? citas : viejoArreglo)
+
             const nuevoArreglo = this.GuardarCitas.map((viejoArreglo: any) => viejoArreglo.id === this.id ? citas : viejoArreglo)
             this.GuardarCitas = nuevoArreglo
             this.id = null
@@ -115,20 +147,13 @@ export class CitasComponent implements OnInit {
             })
             this.renderer2.setAttribute(registrar, 'value', 'Registrarse')
         }
-        localStorage.setItem('citas', JSON.stringify(this.GuardarCitas))
-        this.popo = localStorage.getItem('citas')
+        localStorage.setItem(this.nombre, JSON.stringify(this.GuardarCitas))
+        setTimeout(() => {
+            localStorage.setItem('control-medico', JSON.stringify(this.CitasGlobales))
+        },500)
+        this.popo = localStorage.getItem(this.nombre)
         this.pepe = JSON.parse(this.popo)
         this.ControlCitas.reset()
-    }
-
-    ngOnInit(): void {
-        if(localStorage.getItem('citas')){
-            this.popo = localStorage.getItem('citas')
-            this.pepe = JSON.parse(this.popo)
-        }else{
-            localStorage.setItem('citas', '[]')
-        }
-
     }
 
 }

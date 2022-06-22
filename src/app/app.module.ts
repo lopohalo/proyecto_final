@@ -12,6 +12,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NavbarfijaComponent } from './components/navbarfija/navbarfija.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ControlComponent } from './components/control/control.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
         FooterComponent,
         NavbarfijaComponent,
         NavbarComponent,
+        ControlComponent,
 
     ],
     imports: [

@@ -40,19 +40,19 @@ exports.obtenerContacto = async (req, res) => {
 }
 exports.actualizarContacto = async (req, res) => {
     try {
-        const { documento, random, afiliado } = req.body
+        const { documento, random, afiliado,email } = req.body
 
-        let contacto = await Contacto.findById(req.params.id)
-        if (!contacto) {
+        const existeUsuario = await Contacto.findOne({ email })
+        if (!existeUsuario) {
             res.status(404).json({ mensaje: "No existe la información solicitada" })
         }
 
-        contacto.documento = documento
-        contacto.random = random
-        contacto.afiliado = afiliado
+        existeUsuario.documento = documento
+        existeUsuario.random = random
+        existeUsuario.afiliado = afiliado
 
 
-        let procesoUpdate = await Contacto.findOneAndUpdate({ _id: req.params.id }, contacto, { new: true })
+        let procesoUpdate = await Contacto.findOneAndUpdate({ email }, existeUsuario, { new: true })
         res.json(procesoUpdate)
 
     } catch (error) {

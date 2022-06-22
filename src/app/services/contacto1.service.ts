@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Contacto } from '../../models/contacto'
 import { Login } from '../../models/login';
+import { ContactoActualizar } from '../../models/actualizar';
 
 @Injectable({
   providedIn: 'root'
@@ -28,8 +29,8 @@ export class Contacto1Service {
         return this.http.post(`${this.url_api}/login`, loginFormulario)
     }
 
-    putContacto(id:any, contactoFormulario: Contacto): Observable<any>{
-        return this.http.put(`${this.url_api}/actualizar-contacto/${id}`, contactoFormulario)
+    putContacto(contactoFormulario:  ContactoActualizar): Observable<any>{
+        return this.http.put(`${this.url_api}/actualizar-contacto`, contactoFormulario)
     }
 
     deleteContacto(id:String):Observable<any>{

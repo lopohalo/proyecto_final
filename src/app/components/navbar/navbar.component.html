@@ -4,7 +4,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-
+        <ng-template [ngIf]="VerificarIdentidad.length" [ngIfElse]="loading">
             <ul class="navbar-nav me-auto mb-3 ms-4 mb-lg-0  menu">
                 <li class="nav-item">
                     <a class="inicio nav-link ps-3 pe-3 pt-1 pb-1" aria-current="page" href="#">Inicio</a>
@@ -13,15 +13,41 @@
                     <a class="citas nav-link ps-3 pe-3 pt-1 pb-1 ms-2" href="#"tabindex="-1" [routerLink]="['/citas']" aria-disabled="true">Citas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="registro nav-link ps-3 pe-3 pt-1 pb-1 ms-2" href="#" tabindex="-1"[routerLink]="['/registro']" aria-disabled="true">Registro</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nosotros nav-link ps-3 pe-3 pt-1 pb-1 ms-2" href="#" tabindex="-1" aria-disabled="true">Nosotros</a>
+                    <a class="nosotros nav-link ps-3 pe-3 pt-1 pb-1 ms-2" href="#" tabindex="-1"[routerLink]="['/nosotros']" aria-disabled="true">Nosotros</a>
                 </li>
                 <li class="nav-item">
                     <a class="empresas nav-link ps-3 pe-3 pt-1 pb-1 ms-2" href="#" tabindex="-1" aria-disabled="true">Empresas</a>
                 </li>
             </ul>
+        </ng-template>
+        <ng-template #loading>
+            <ul class="navbar-nav me-auto mb-3 ms-4 mb-lg-0  menu">
+                <li class="nav-item">
+                    <a class="inicio nav-link ps-3 pe-3 pt-1 pb-1" aria-current="page" href="#">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="registro nav-link ps-3 pe-3 pt-1 pb-1 ms-2" href="#" tabindex="-1"[routerLink]="['/registro']" aria-disabled="true">Registro</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nosotros nav-link ps-3 pe-3 pt-1 pb-1 ms-2" href="#" tabindex="-1"[routerLink]="['/nosotros']" aria-disabled="true">Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="empresas nav-link ps-3 pe-3 pt-1 pb-1 ms-2" href="#" tabindex="-1" aria-disabled="true">Empresas</a>
+                </li>
+            </ul>
+        </ng-template>
+        <ng-template [ngIf]="VerificarIdentidad == 'Doctor Juan'">
+            <ul class="navbar-nav me-auto mb-3 ms-4 mb-lg-0  menu">
+                <li class="nav-item">
+                    <a class="citas nav-link ps-3 pe-3 pt-1 pb-1 ms-2" href="#"tabindex="-1" [routerLink]="['/control']" aria-disabled="true">Control doctor</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="empresas nav-link ps-3 pe-3 pt-1 pb-1 ms-2" href="#" tabindex="-1"  aria-disabled="true">Farmacia</a>
+                </li>
+            </ul>
+        </ng-template>
+
         </div>
         <div class="redes d-flex">
             <form class=" d-flex busqueda">

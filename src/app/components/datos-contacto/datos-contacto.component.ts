@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { ActivatedRoute, Router } from '@angular/router';
+import { Contacto1Service } from '../../services/contacto1.service'
+import Swal from 'sweetalert2'
+import { ContactoActualizar  } from '../.././../models/actualizar';
 @Component({
     selector: 'app-datos-contacto',
     templateUrl: './datos-contacto.component.html',
@@ -9,38 +12,90 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class DatosContactoComponent implements OnInit {
     Controlmedico: FormGroup
     objetoDeControlMedico: any
-    constructor(private fb: FormBuilder) {
+    guardandoEmail :any
+    ContactoActualizar :[] = []
+    constructor(private fb: FormBuilder, private _servicio: Contacto1Service,private router: Router) {
         this.Controlmedico = fb.group({
             nombre: ['', Validators.required],
-            apellido: ['', Validators.required],
             edad: ['', Validators.required],
             genero: ['', Validators.required],
-            tipo: ['', Validators.required],
+            documento: ['', Validators.required],
             celular: ['', Validators.required],
-            comienzo: ['', Validators.required],
             sintomas: ['', Validators.required],
             tratamiento: ['', Validators.required],
             medicamento1: [''],
             medicamento2: [''],
             medicamento3: [''],
             tipoD: [''],
-
+            email:  ['', Validators.required],
+            afiliado: ['', Validators.required],
         })
     }
     enviardatos() {
-         this.objetoDeControlMedico = [{
+        this.objetoDeControlMedico = [{
             nombre: this.Controlmedico.get('nombre')?.value,
-            apellido: this.Controlmedico.get('apellido')?.value,
-            tipo: this.Controlmedico.get('tipo')?.value,
+            documento: this.Controlmedico.get('documento')?.value,
             tratamiento: this.Controlmedico.get('tratamiento')?.value,
             tipoD: this.Controlmedico.get('tipoD')?.value,
             medicamento1: this.Controlmedico.get('medicamento1')?.value,
             medicamento2: this.Controlmedico.get('medicamento2')?.value,
             medicamento3: this.Controlmedico.get('medicamento3')?.value
-    }]
+        }]
+        let numer:any = Math.random()
+        let numer1: any = numer.toString()
+        let numer2 = numer1.slice(2,6)
+
+
+        let objeto: ContactoActualizar = {
+            email: this.Controlmedico.get('email')?.value,
+            documento: this.Controlmedico.get('documento')?.value,
+            random: numer2,
+            afiliado: this.Controlmedico.get('afiliado')?.value
+        }
+
+        console.log(objeto)
+
+
+        this._servicio.putContacto(objeto).subscribe(data=>{
+            Swal.fire({
+                title: 'Paciente actualizado!',
+                text: 'Se guardaron los cambios en el producto',
+                icon: 'success',
+                confirmButtonText: 'Vale'
+            })
+            console.log(data)
+            localStorage.setItem('datos-medico','')
+            this.router.navigate([''])
+        }, error=>{
+            console.log(error)
+        })
+
+
 
     }
+    llenando(){
+        const objeto: any = localStorage.getItem('datos-medico')
+        const respuestaobjeto = JSON.parse(objeto)
+        const resultado = respuestaobjeto[0]
+        this.guardandoEmail = resultado.email
+        this.Controlmedico.setValue({
+            nombre: resultado.nombre,
+            documento: resultado.documento,
+            email: resultado.email,
+            edad: [''],
+            genero: [''],
+            tipoD: [''],
+            celular: [''],
+            sintomas:resultado.sintomas,
+            tratamiento:[''],
+            medicamento1: [''],
+            medicamento2: [''],
+            medicamento3: [''],
+            afiliado: ['']
+        })
+    }
     ngOnInit(): void {
+        this.llenando()
     }
 
 }

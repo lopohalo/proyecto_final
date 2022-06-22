@@ -22,11 +22,11 @@
                                 </div>
                                 <div class="col-12 col-md-3 col-lg-3">
                                     <div class="input-group-desc">
-                                        <input class="input--style-5" formControlName="apellido" type="text"
+                                        <input class="input--style-5" formControlName="email" type="text"
                                             name="last_name">
-                                        <label class="label--desc">Apellidos</label>
+                                        <label class="label--desc">correo</label>
                                         <span class="error"
-                                            *ngIf="Controlmedico.get('apellido')?.hasError('required') && Controlmedico.get('apellido')?.touched">Apellido
+                                            *ngIf="Controlmedico.get('email')?.hasError('required') && Controlmedico.get('email')?.touched">Correo
                                             Obligatorio</span>
                                     </div>
                                 </div>
@@ -76,11 +76,11 @@
                                         </div>
                                         <div class="col-12 col-md-8 col-lg-8">
                                             <div class="input-group-desc">
-                                                <input class="input--style-5" formControlName="tipo" type="text"
+                                                <input  class="input--style-5" formControlName="documento" type="text"
                                                     name="last_name">
                                                 <label class="label--desc">Numero de Documento</label>
                                                 <span class="error"
-                                                    *ngIf="Controlmedico.get('tipo')?.hasError('required') && Controlmedico.get('tipo')?.touched">Numero
+                                                    *ngIf="Controlmedico.get('documento')?.hasError('required') && Controlmedico.get('documento')?.touched">Numero
                                                     Obligatorio</span>
                                             </div>
                                         </div>
@@ -128,7 +128,7 @@
                                 </div>
                                 <div class="col-12 col-md-3 col-lg-3">
                                     <div class="input-group-desc my-5">
-                                        <input class="input--style-5" formControlName="comienzo" type="text"
+                                        <input class="input--style-5"  type="text"
                                             name="last_name">
                                         <label class="label--desc">Comienzo Vida/S</label>
                                         <span class="error"
@@ -146,7 +146,7 @@
                                 <div class="col-12 col-md-3 col-lg-3">
                                     <div class="input-group-desc">
                                         <input class="input--style-5" type="text" name="first_name">
-                                        <label class="label--desc">Nombres</label>
+                                        <label class="label--desc">Nombres </label>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-3 col-lg-3">
@@ -241,14 +241,15 @@
                         <label class="label label--block">Le gustaria ser un afiliado?</label>
                         <div class="p-t-15">
                             <label class="radio-container m-r-55">Si
-                                <input type="radio" checked="checked" name="exist">
+                                <input formControlName="afiliado" value="si" type="radio" checked="checked" >
                                 <span class="checkmark"></span>
                             </label>
                             <label class="radio-container">No
-                                <input type="radio" name="exist">
+                                <input formControlName="afiliado" value="no" type="radio" >
                                 <span class="checkmark"></span>
                             </label>
                         </div>
+                        <label *ngIf="Controlmedico.get('afiliado')?.hasError('required') && Controlmedico.get('afiliado')?.touched">afiliado</label>
                     </div>
                     <div>
                         <button class="btn btn-primary" (click)="enviardatos()" data-bs-toggle="modal"
@@ -281,9 +282,9 @@
                                                 <tbody>
                                                     <tr>
                                                         <th scope="row">1</th>
-                                                        <td>{{ipsControl.nombre}} {{ ipsControl.apellido}}</td>
+                                                        <td>{{ipsControl.nombre}}</td>
                                                         <td>{{ipsControl.tipoD}}</td>
-                                                        <td>{{ipsControl.tipo}}</td>
+                                                        <td>{{ipsControl.documento}}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>

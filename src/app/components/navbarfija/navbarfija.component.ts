@@ -20,7 +20,7 @@ export class NavbarfijaComponent implements OnInit {
     revisarCorreo = /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/
     @ViewChild('img') imgHTML?: ElementRef;
     @ViewChild('password') passwordHTML?: ElementRef;
-    @ViewChild('botonInicio')botonInicio?: ElementRef
+    @ViewChild('botonInicio') botonInicio?: ElementRef
     constructor(private fb: FormBuilder,
         private renderer2: Renderer2,
         private _contactoService: Contacto1Service,
@@ -33,7 +33,7 @@ export class NavbarfijaComponent implements OnInit {
 
     Analizando() {
         const inicio = this.botonInicio?.nativeElement;
-        const iniciarSesion:Login = {
+        const iniciarSesion: Login = {
             email: this.productoForm.get('email')?.value,
             password: this.productoForm.get('password')?.value,
         }
@@ -41,11 +41,11 @@ export class NavbarfijaComponent implements OnInit {
             this.productoForm.reset()
             inicio.click()
             this.guardarNombre = [data.name]
-            console.log(this.guardarNombre)
             localStorage.setItem('Nombre', JSON.stringify(this.guardarNombre))
             this.popo = localStorage.getItem('Nombre')
             this.pepe = JSON.parse(this.popo)
-            this.router.navigate(['/citas'])
+
+                window.location.reload()
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
@@ -53,7 +53,7 @@ export class NavbarfijaComponent implements OnInit {
                 showConfirmButton: false,
                 timer: 1500
             })
-        },HttpErrorResponse => {
+        }, HttpErrorResponse => {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
@@ -61,14 +61,16 @@ export class NavbarfijaComponent implements OnInit {
             })
         })
     }
-    cerrarSesion(){
+    cerrarSesion() {
         localStorage.setItem('Nombre', '[]')
         this.popo = localStorage.getItem('Nombre')
         this.pepe = JSON.parse(this.popo)
-
+        setTimeout(() =>{
+            window.location.reload()
+        },200)
+        this.router.navigate([''])
     }
     cambio1() {
-
         const elemento = this.passwordHTML?.nativeElement;
         const imagen = this.imgHTML?.nativeElement;
         const juan = elemento.dataset.muestraj;
@@ -83,12 +85,16 @@ export class NavbarfijaComponent implements OnInit {
             this.renderer2.setAttribute(imagen, 'src', './assets/img/eye-slash-solid.svg');
         }
     }
+
+
     ngOnInit(): void {
-        if(localStorage.getItem('Nombre')){
-        this.popo = localStorage.getItem('Nombre')
-        this.pepe = JSON.parse(this.popo)
-        }else{
+        if (localStorage.getItem('Nombre')) {
+            this.popo = localStorage.getItem('Nombre')
+            this.pepe = JSON.parse(this.popo)
+        } else {
             localStorage.setItem('Nombre', '[]')
+            this.popo = localStorage.getItem('Nombre')
+            this.pepe = JSON.parse(this.popo)
         }
     }
 
