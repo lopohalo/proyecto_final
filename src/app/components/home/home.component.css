@@ -44,7 +44,6 @@ border-width:3px;
 }
 
 
-
 .carrucel{
 width: 100%;
 }
@@ -83,17 +82,17 @@ width: 100%;
 }
 
 a {
-  background-image: linear-gradient(
+background-image: linear-gradient(
     to right,
     #1D70B7,
     #1D70B7 50%,
     #000 50%
-  );
-  background-size: 200% 100%;
-  background-position: -100%;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transition: all 0.3s ease-in-out;
+);
+background-size: 200% 100%;
+background-position: -100%;
+background-clip: text;
+-webkit-text-fill-color: transparent;
+transition: all 0.3s ease-in-out;
 }
 
 .imagen
@@ -102,15 +101,15 @@ height: 600px;
 }
 
 .total{
-  position: relative;
-  display: inline-block;
-  text-align: center;
+position: relative;
+display: inline-block;
+text-align: center;
 }
 
 .texto-encima{
-  position: absolute;
-  top: 290px;
-  left: 55%;
+position: absolute;
+top: 290px;
+left: 55%;
 }
 
 .text:hover {
@@ -118,28 +117,28 @@ color:#BD1222
 }
 
 .slogan{
-  font-size: 1.2rem;
+font-size: 1.2rem;
 }
 
 .imagen{
-  width: 150%;
+width: 110%;
 }
 
 @media (max-width: 768px) {
-  .tarjeta1{
+.tarjeta1{
     width: 100% !important;
     font-size: 0.9rem;
 }
 .tarjeta2
 {
-  width: 100% !important;
-  font-size: 0.9rem;
+width: 100% !important;
+font-size: 0.9rem;
 }
 
 .tarjeta3
 {
-  width: 100% !important;
-  font-size: 0.9rem;
+width: 100% !important;
+font-size: 0.9rem;
 }
 
 }
