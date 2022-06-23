@@ -1,9 +1,9 @@
 <div class="py-10 " style="background: #f0f0f0;">
-    <div class="container mx-auto  ">
+    <div class="container mx-auto">
         <h1 class="font-black text-5xl text-center md:w-2/3 mx-auto">Seguimientos de tus Citas <span
                 class="text-indigo-600">IPS Unidos</span></h1>
         <div class="mt-12 md:flex">
-            <div class="md:w-1/2 lg:w-2/5">
+            <div class="md:w-1/2 lg:w-2/5" style="margin-right: 40px;">
                 <h2 class="font-black text-3xl text-center">Agenda tu Cita</h2>
                 <p class="text-lg mt-5 text-center mb-10">
                     Control medico de
@@ -54,7 +54,7 @@
                             Obligatorio</span>
                     </div>
                     <div class="mb-5">
-                        <label htmlFor="sintomas" class="block text-gray-700 uppercase font-bold">Fecha de la Cita</label>
+                        <label htmlFor="sintomas" class="block text-gray-700 uppercase font-bold">Sintomas</label>
                         <textarea #sintomas formControlName="sintomas"
                             class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" id="sintomas"
                             placeholder="Describe los sintomas"></textarea>
@@ -66,7 +66,7 @@
                         [disabled]="ControlCitas.invalid" value="Registrarse" type="submit"/>
                 </form>
             </div>
-            <div class="md:w-1/2 lg:w-3/5 md:h-screen overflow-y-scroll">
+            <div class="md:w-1/2 lg:w-4/5 md:h-screen overflow-y-scroll">
 
                 <ng-template [ngIf]="pepe.length" [ngIfElse]="loading">
                     <div class="lessons-list">
@@ -76,8 +76,6 @@
                                 Citas</span></p>
                     </div>
                 </ng-template>
-
-
 
                 <div *ngFor="let control of pepe" class="m-3 bg-white shadow-md px-5 py-10 rounded-xl">
                     <p class="font-bold mb-3 text-gray-700 uppercase">Documento:

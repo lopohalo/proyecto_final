@@ -252,17 +252,15 @@
                         <label *ngIf="Controlmedico.get('afiliado')?.hasError('required') && Controlmedico.get('afiliado')?.touched">afiliado</label>
                     </div>
                     <div>
-                        <button class="btn btn-primary" (click)="enviardatos()" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdrop" class="btn btn--radius-2 btn--red"
+                        <button class="btn btn-primary" (click)="enviardatos()" data-bs-toggle="modal" data-bs-target="#staticBackdrop11" class="btn btn--radius-2 btn--red"
                             [disabled]="Controlmedico.invalid" type="submit">Enviar Datos</button>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal fade"  id="staticBackdrop11" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop1Label" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header" style="background: royalblue">
-                                        <h5 class="modal-title text-center" style="font-weight: 800;font-size: 1.1rem;" id="staticBackdropLabel">Control Medico
+                                        <h5 class="modal-title text-center" style="font-weight: 800;font-size: 1.1rem;" id="staticBackdrop1Label">Control Medico
                                             Especializado</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
@@ -305,7 +303,7 @@
                                     <div class="modal-footer d-flex justify-content-between">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal" style="background: red;">Cerrar</button>
-                                        <button type="button" class="btn btn-primary"style="background: royalblue !important;">Enviar</button>
+                                        <button type="button" (click)="redirigir()" class="btn btn-primary"style="background: royalblue !important;">Enviar</button>
                                     </div>
                                 </div>
                             </div>

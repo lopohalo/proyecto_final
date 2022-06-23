@@ -27,7 +27,7 @@ export class CitasComponent implements OnInit {
                 Validators.minLength(9),
                 Validators.maxLength(10),
             ])],
-            nombre: ['', Validators.required],
+            nombre: ['J', Validators.required],
             email: ['', [Validators.required, Validators.pattern(this.revisarCorreo)]],
             fecha: ['', Validators.required],
             sintomas: ['', Validators.required]

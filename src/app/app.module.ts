@@ -13,6 +13,7 @@ import { NavbarfijaComponent } from './components/navbarfija/navbarfija.componen
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ControlComponent } from './components/control/control.component';
+import { FarmaciaComponent } from './components/farmacia/farmacia.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { ControlComponent } from './components/control/control.component';
         NavbarfijaComponent,
         NavbarComponent,
         ControlComponent,
+        FarmaciaComponent,
 
     ],
     imports: [
