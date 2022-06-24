@@ -154,5 +154,7 @@ export class FarmaciaComponent implements OnInit {
         this.afiliado = JSON.parse(guardandoAfiliado)
         const hola:any = this.afiliado.afiliado
         this.afiliado = hola
+        console.log(this.afiliado)
+
     }
 }
